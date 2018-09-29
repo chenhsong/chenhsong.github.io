@@ -1,8 +1,10 @@
-﻿html {
+html {
   margin: 0;
   padding: 0;
-  background-color: gray; font-family: sans-serif;
+  background-color: gray;
+  font-family: sans-serif;
 }
+
 body {
   margin: 0 auto;
   padding: 0;
@@ -10,15 +12,19 @@ body {
   max-width: 1024px;
   min-width: 600px;
 }
+
 a {
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
+
 sup {
   font-size: 60%;
 }
+
 header {
   background-image: url(../images/header.jpg);
   background-size: 100% 100%;
@@ -34,28 +40,35 @@ header {
   text-overflow: clip;
   overflow: visible;
 }
+
 header img {
   height: 1em;
 }
+
 #logo-ichen {
   float: left;
   height: 3.5em;
   margin: 0.1em 0.5em 0 0;
 }
+
 #logo-ch {
   float: right;
   margin: 0.5em 0;
 }
+
 section {
   clear: both;
   padding: 1em;
 }
+
 section:nth-child(even) {
   background-color: #f7f7f7;
 }
+
 h2 {
   margin: 0;
 }
+
 footer {
   background-image: url(../images/header.jpg);
   background-size: 100% auto;
@@ -63,13 +76,22 @@ footer {
   font-size: 80%;
   text-align: center;
 }
-.advanced {
+
+.pill {
   display: inline-block;
   font-size: 70%;
   font-weight: bold;
-  color: white;
-  background-color: red;
   margin-left: 1em;
   padding: 0.05em 0.5em 0.15em 0.5em;
   border-radius: 0.3em;
+}
+
+.pill.red {
+  color: white;
+  background-color: red;
+}
+
+.pill.green {
+  color: greenyellow;
+  background-color: darkgreen;
 }
