@@ -4,13 +4,13 @@ CHANGES LOG
 4.1.0.0 build 6845.39 (Release)
 -------------------------------
 
-This is the initial release of version 4.1 of the iChen Server,
+This is the initial release of version 4.1 of the iChen® Server,
 which has been converted to .NET Standard 2.0 and runs under both
 Windows (with .NET Framework) and Linux (with .NET Core).
 
 This new version includes countless enhancements to version 4.0 
-with more hardware support (e.g. Linux tty-style serial ports, 
-CDC2000WIN and MPC-7.0 controllers), advanced features (e.g. RT_TEMP
+with more hardware support (e.g. Linux `tty`-style serial ports, 
+CDC2000WIN and MPC-7.0 controllers), advanced features (e.g. `RT_TEMP`
 messages, broadcasting and relaying mode, Azure IOT Hub support),
 significant stability and performance improvements, as well as
 numerous bug fixes.
@@ -21,15 +21,15 @@ numerous bug fixes.
 4.0.4.0 build 6425.20461 (Release)
 ----------------------------------
 
-New Feature:
+### New Feature
 
 - Supports direct connections via serial (COM) ports to Ai/CPC/MPC controllers.
 
-Bug Fix:
+### Bug Fix
 
 - Fixes a bug related to HTTP port reservation that causes setup to fail.
 
-Enhancement:
+### Enhancement
 
 - The Console is now multi-colored to better highlight errors and warnings.
 
@@ -38,9 +38,9 @@ Enhancement:
 4.0.3.0
 -------
 
-New Features:
+### New Features
 
-- Supports TLS/SSL3 encryption for OpenProtocol WebSocket connections.
+- Supports TLS/SSL3 encryption for Open Protocol™ WebSocket connections.
 
 - Supports HTTPS protocol for web interfaces.
 
@@ -51,10 +51,10 @@ New Features:
 4.0.2.0
 -------
 
-New Feature:
+### New Feature
 
 - Allows "locking" of a machine serial number to a particular IP address pattern (regex).
-  When a machine JOIN's from a matched IP, the serial number is overwritten.
+  When a machine `JOIN`'s from a matched IP, the serial number is overwritten.
   This is to handle certain controllers on the field that tend to revert back to the
   default serial number for unknown reasons.
 
@@ -65,13 +65,13 @@ New Feature:
 
 Release date: 2017-06-02
 
-Hot Fix:
+### Hot Fix
 
 - Fixes a bug which allows multiple controllers to connect simultaneously with the same
   machine serial number.  Now only one machine can be connected with each unique serial
-  number. The JOIN messages of any duplicating controller will be rejected.
+  number. The `JOIN` messages of any duplicating controller will be rejected.
 
-Enhancements:
+### Enhancements
 
 - Support more firmware versions of the Ai-11 controller.
 
@@ -82,9 +82,9 @@ Enhancements:
 
 Release date: 2017-05-22
 
-Hot Fix:
+### Hot Fix
 
-- Fixes a bug which prevents changing the password of the admin user.
+- Fixes a bug which prevents changing the password of admin users.
 
 
 
@@ -93,12 +93,12 @@ Hot Fix:
 
 Release date: 2017-03-20
 
-Hot Fix:
+### Hot Fix
 
 - Fixes a bug which blocks storage of data to external database when there is a mold data set
   pending.
 
-New Feature:
+### New Feature
 
 - New setup option to automatically login any connecting controller to authorization level 5
   (i.e. line supervisor).  This is particularly useful for Ai-series controllers.
@@ -110,15 +110,15 @@ New Feature:
 
 Release date: 2017-02-10
 
-Description:
+### Description
 
 This is the official iChen System 4.0 release.
 
-New Feature:
+### New Feature
 
 - One-click MSI setup package with uninstaller
 
-Enhancements:
+### Enhancements
 
 - The Terminal is now multi-lingual.
 
@@ -129,13 +129,13 @@ Enhancements:
 
 Release date: 2017-01-06
 
-Description:
+### Description
 
 This is a maintenance release that fixes certain bugs on RC6.
 
-Breaking Change:
+### Breaking Change
 
-- Machine mold setting parameters returned with the MoldData message have been fine-tuned
+- Machine mold setting parameters returned with the `MoldData` message have been fine-tuned
   to include more descriptive variable names. Consequently the names of some variables are
   different from previous versions.
 
@@ -146,11 +146,11 @@ Breaking Change:
 
 Release date: 2017-01-04
 
-New Features:
+### New Features
 
 - Supports off-line data archiving to a SQL Server database
 
-- Supports Analytics backed by data archived on a SQL Server database
+- Analytics backed by data archived on a SQL Server database
 
 
 
@@ -159,7 +159,7 @@ New Features:
 
 Release date: 2016-12-28
 
-New Features:
+### New Features
 
 - All web user interfaces (including server configuration) are now multi-lingual
   (currently supporting English, Traditional and Simplified Chinese)
@@ -174,17 +174,17 @@ New Features:
 
 Release date: 2016-12-10
 
-Description:
+### Description
 
 This is a maintenance release that fixes a bug on editing user permissions
 via the web interface.
 
-Enhancements:
+### Enhancements
 
-- iChen Server now runs under LocalService account and there is no need to provide a
+- iChen Server now runs under `LocalService` account and there is no need to provide a
   password during installation
 
-Bug Fixes:
+### Bug Fixes
 
 - Fixed a bug preventing changing/modifying user permissions on the web configuration
 
@@ -195,21 +195,21 @@ Bug Fixes:
 
 Release date: 2016-11-25
 
-Breaking Changes:
+### Breaking Changes
 
-- MoldData message of Open Protocol now includes a dictionary of all current mold settings
+- `MoldData` message of Open Protocol™ now includes a dictionary of all current mold settings
   (notice that, in order to reduce payload size, variables/fields with zero values are not included)
 
 - Audit trail now gives the name of the corresponding variable/field
 
-New Features:
+### New Features
 
 - iChen Server 4.0 now acts as an OPC UA Server
 
-- New ReadMoldData command added to Open Protocol to read the current value of a variable/field,
-  and a new MoldDataValue response message containing the current value
+- New `ReadMoldData` command added to Open Protocol to read the current value of a variable/field,
+  and a new `MoldDataValue` response message containing the current value
 
-- All web-based examples are enhanced with the ReadMoldData command
+- All web-based examples are enhanced with the `ReadMoldData` command
 
 
 
@@ -218,9 +218,9 @@ New Features:
 
 Release date: 2016-11-09
 
-Description:
+### Description
 
-This is a maintenance release that fixes a RequestMoldData
+This is a maintenance release that fixes a `RequestMoldData`
 bug on Ai controllers.
 
 
@@ -230,11 +230,11 @@ bug on Ai controllers.
 
 Release date: 2016-11-02
 
-Upgrades:
+### Upgrades
 
 - Web interface is now based on Bootstrap 4
 
-Bug Fixes:
+### Bug Fixes
 
 - Fixed bug on cycle data variable names for Ai controllers
 
@@ -251,13 +251,13 @@ Bug Fixes:
 
 Release date: 2016-09-22
 
-Enhancements:
+### Enhancements
 
 - Added support for CDC2000WIN controllers
 
 - All-rounded performance improvements
 
-Bug Fixes:
+### Bug Fixes
 
 - Fixed login issues on Chrome
 
@@ -267,6 +267,6 @@ Bug Fixes:
 
 - Numerous small bug fixes
 
-Known Issues:
+### Known Issues
 
 - Some layout formatting on Safari is still screwed up
