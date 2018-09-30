@@ -1,7 +1,7 @@
 iChen® System 4.1 MIS/MES Integration Guide
 =============================================
 
-Copyright &copy; Chen Hsong Holdings Ltd.  All rights reserved.  
+Copyright © Chen Hsong Holdings Ltd.  All rights reserved.  
 Document Version: 4.1  
 Last Edited: 2018-01-23
 
@@ -201,7 +201,7 @@ The MIS/MES can then store this data centrally.
 
 ### (2) Use the Mold Data REST API
 
-The iChen® System 4.1 exposes a [REST API](https://github.com/chenhsong/iChen.Web/blob/master/REST%20API%20Reference.md) that allows the
+The iChen® System 4.1 exposes a Mold Data [REST API](https://github.com/chenhsong/iChen.Web/blob/master/REST%20API%20Reference.md#molds-management) that allows the
 MIS/MES to inspect, add and delete stored mold data sets. It is up to the MIS/MES to synchronize
 its mold data sets database with that in the iChen® System 4.1.
 
