@@ -23,7 +23,7 @@ for details).
 The iChen® Server sends Open Protocol™ messages to the MIS/MES and the MIS/MES
 responds with appropriate reply messages:
 
-![](mis_comms_chart.png)
+![MIS/MES Communications Chart](mis_comms_chart.png)
 
 
 Integrated Security
@@ -99,16 +99,16 @@ The MIS/MES allocates and schedules units of work to individual machines via the
 of *Job Cards*.
 
 A *Job Card* is single *unit of work* to be performed by one single machine.
-It can represent a single *production order*, or *part* of a production order that 
+It can represent a single *production order*, or *part* of a production order that
 is allocated among certain number of machines during a particular time.
 The MIS/MES system is responsible for tracking, allocating and scheduling machines to
-satisfy 
+satisfy
 
-Typically a *job card* is identified by a unique textual ID value (which typically 
+Typically a *job card* is identified by a unique textual ID value (which typically
 contains the unique *order number* that is it part of).  Examples of job card ID's:
 
 > `ORDER12345-5-003`  *(The third machine for the first line item of order #12345)*
-> 
+>
 > `C987-X2016(03)-42-005/008`  *(The fifth machine out of eight allocated to batch 42 of order `X2016(03)` of customer #987)*
 >
 > `JKB-135/63`  *(63rd item for project code `JKB-135`)*
@@ -131,7 +131,7 @@ time of request.
 
 Typically, only one job card is allocated to an individual machine
 at any time, so in most cases the list will contain only one job card item.
-In rare cases, when new ad-hoc jobs are inserted into the normal production 
+In rare cases, when new ad-hoc jobs are inserted into the normal production
 schedule (i.e. *barge-in*), the list may contain more than one job card for
 the operator to choose from; however, in the interest of reducing operator errors,
 such practice should be avoided.
@@ -194,7 +194,7 @@ centrally.  There are a few ways to accomplish this:
 
 The MIS/MES sends a [`RequestMoldDataMessage`](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#requestmolddatamessage)
 to the iChen® System 4.1 for a particular machine (based on that machine's unique
-serial number), which will respond with a 
+serial number), which will respond with a
 [`MoldDataMessage`](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#molddatamessage) containing the current
 settings data of the specified machine in the form of an binary array.
 The MIS/MES can then store this data centrally.

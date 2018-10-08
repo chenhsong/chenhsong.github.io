@@ -14,7 +14,7 @@ Users need to employ their own storage mechanism for data archival purposes.
 Data is usually obtained via either an Open Protocol™ or OPC UA connection.
 
 This design offers tremendous benefits.  Not only does it obey the principle of
-[*Separation of Concerns (SoC)*](https://en.wikipedia.org/wiki/Separation_of_concerns), 
+[*Separation of Concerns (SoC)*](https://en.wikipedia.org/wiki/Separation_of_concerns),
 it helps keep the CPU, memory and hard-disk footprints of the server minimal,
 allowing it to run on a diverse range of hardware, such as head-less, fan-less
 mini-PC's with tiny form factor, small solid-state flash storage, weak CPU's and
@@ -37,7 +37,7 @@ storage facilities.  The iChen® Server 4.1 installation program automatically
 handles the configuration, asking only a few information pieces such as the
 server name, user name and password etc.
 
-If the database system is very non-standard, so much so that cannot be handled by the 
+If the database system is very non-standard, so much so that cannot be handled by the
 installation program, it can still be done manually. This requires minor changes to
 several configuration files in order to redirect data storage to that external database.
 
@@ -70,7 +70,6 @@ Supported Databases
 |PostgreSQL                 |*call for support*              |
 |Oracle                     |*call for support*              |
 |DB2                        |*call for support*              |
-
 
 
 Step 1 - Create the Archive Database
@@ -126,7 +125,7 @@ and `db_datawriter` roles.
 
 #### Option: Create Tables under Custom Schema in SQL Server®
 
-When using an existing database for such storage (perhaps to include 
+When using an existing database for such storage (perhaps to include
 iChen® System 4.1 data together with data from other equipment),
 it is possible to create the tables under their own *schema* for better management
 and security control.  For example, running the following *before* creating the tables
@@ -178,13 +177,13 @@ and find the following section:
 
 ~~~~~~~~xml
 <configuration>
-	<connectionStrings>
-		<add name="ConfigDB" connectionString="Data Source=|DataDirectory|\Database\iChenServerDB.sdf" providerName="System.Data.SqlServerCe.4.1" />
-		<add name="DataArchiveDB" connectionString="..." providerName="System.Data.Odbc" />
-	</connectionStrings>
+    <connectionStrings>
+        <add name="ConfigDB" connectionString="Data Source=|DataDirectory|\Database\iChenServerDB.sdf" providerName="System.Data.SqlServerCe.4.1" />
+        <add name="DataArchiveDB" connectionString="..." providerName="System.Data.Odbc" />
+    </connectionStrings>
 
-		:
-		:
+        :
+        :
 </configuration>
 ~~~~~~~~
 
@@ -198,12 +197,12 @@ For the `connectionString` attribute, change it to the *ODBC connection string* 
 to the  database.  For example, a typical *connection string* for Microsoft SQL Server®
 should look like (in one single line):
 
-~~~~~~~~
+~~~~~~~~txt
 Driver={SQL Server};
-	Server=ServerName\SQLSERVER;
-	Database=HistoricalDataStorageDB;
-	Uid=iChenServer;
-	Pwd=ThePassword
+    Server=ServerName\SQLSERVER;
+    Database=HistoricalDataStorageDB;
+    Uid=iChenServer;
+    Pwd=ThePassword
 ~~~~~~~~
 
 Different database systems have different connection string formats. Consult on-line
@@ -215,13 +214,13 @@ The final `<connectionStrings>` section should now look like this (if using SQL 
 
 ~~~~~~~~xml
 <configuration>
-	<connectionStrings>
-		<add name="ConfigDB" connectionString="Data Source=|DataDirectory|\Database\iChenServerDB.sdf" providerName="System.Data.SqlServerCe.4.1" />
-		<add name="DataArchiveDB" connectionString="Driver={SQL Server};Server=ServerName\SQLSERVER;Database=HistoricalDataStorageDB;Uid=iChenServer;Pwd=ThePassword" providerName="System.Data.Odbc" />
-	</connectionStrings>
+    <connectionStrings>
+        <add name="ConfigDB" connectionString="Data Source=|DataDirectory|\Database\iChenServerDB.sdf" providerName="System.Data.SqlServerCe.4.1" />
+        <add name="DataArchiveDB" connectionString="Driver={SQL Server};Server=ServerName\SQLSERVER;Database=HistoricalDataStorageDB;Uid=iChenServer;Pwd=ThePassword" providerName="System.Data.Odbc" />
+    </connectionStrings>
 
-		:
-		:
+        :
+        :
 </configuration>
 ~~~~~~~~
 
@@ -239,15 +238,15 @@ and find the following section:
 
 ~~~~~~~~xml
 <configuration>
-	<appSettings>
-			:
-			:
-		<add key="DataStore" />
-		<add key="CloudStore_Account" value="ichen" />
-		<add key="CloudStore_Signature" value=" ... " />
-			:
-			:
-	</appSettings>
+    <appSettings>
+            :
+            :
+        <add key="DataStore" />
+        <add key="CloudStore_Account" value="ichen" />
+        <add key="CloudStore_Signature" value=" ... " />
+            :
+            :
+    </appSettings>
 </configuration>
 ~~~~~~~~
 
@@ -257,19 +256,19 @@ Change the `DataStore` key entry to `DataArchiveDB`:
 
 ~~~~~~~~xml
 <configuration>
-	<appSettings>
-			:
-			:
-		<!-- External archive database added -->
-		<add key="DataStore" value="DataArchiveDB" />
+    <appSettings>
+            :
+            :
+        <!-- External archive database added -->
+        <add key="DataStore" value="DataArchiveDB" />
 
-		<!-- Chen Hsong Cloud can be commented out if no longer needed -->
-		<!-- or just leave it be; data can be stored in both places simultaneously -->
-		<!--add key="CloudStore_Account" value="ichen" /-->
-		<!--add key="CloudStore_Signature" value=" ... " /-->
-			:
-			:
-	</appSettings>
+        <!-- Chen Hsong Cloud can be commented out if no longer needed -->
+        <!-- or just leave it be; data can be stored in both places simultaneously -->
+        <!--add key="CloudStore_Account" value="ichen" /-->
+        <!--add key="CloudStore_Signature" value=" ... " /-->
+            :
+            :
+    </appSettings>
 </configuration>
 ~~~~~~~~
 
@@ -281,18 +280,18 @@ Leaving the **Chen Hsong Cloud** settings intact will upload data for storage on
 
 ~~~~~~~~xml
 <configuration>
-	<appSettings>
-			:
-			:
-		<!-- External archive database added -->
-		<add key="DataStore" value="DataArchiveDB" />
+    <appSettings>
+            :
+            :
+        <!-- External archive database added -->
+        <add key="DataStore" value="DataArchiveDB" />
 
-		<!-- Chen Hsong Cloud still used -->
-		<add key="CloudStore_Account" value="ichen" />
-		<add key="CloudStore_Signature" value=" ... " />
-			:
-			:
-	</appSettings>
+        <!-- Chen Hsong Cloud still used -->
+        <add key="CloudStore_Account" value="ichen" />
+        <add key="CloudStore_Signature" value=" ... " />
+            :
+            :
+    </appSettings>
 </configuration>
 ~~~~~~~~
 

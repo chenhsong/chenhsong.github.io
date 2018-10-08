@@ -43,7 +43,7 @@ pIChen->SetMachineInfo(1,0,123456,L"JM138Ai");
 pIChen->SetServerIP(192,168,123,234,34954);
 ~~~~~~~~~~~~~
 
-or 
+or
 
 ~~~~~~~~~~~~~cpp
 #include "iChenNativeLibrary.h"
@@ -51,8 +51,8 @@ or
 using namespace IChenNativeLibrary;
 
 // This call is equivalent to the one above
-CiChenLibraryInterface *pIChen = 
-	new CiChenLibraryInterface(10,0,1,0,123456,L"JM138Ai",192,168,123,234,34954);
+CiChenLibraryInterface *pIChen =
+    new CiChenLibraryInterface(10,0,1,0,123456,L"JM138Ai",192,168,123,234,34954);
 ~~~~~~~~~~~~~
 
 ### Step 2
@@ -80,49 +80,49 @@ long reconnect_count = -1;
 
 while (true)
 {
-	// Notice that the last value for pMessage is passed into the next call
-	if (!pIChen->GetNextServerMessage(&pMessage)) {
-		// This shouldn't happen!  Something has gone wrong with the connection!
-		// ... do something drastic (e.g. reconnect)...
-		break;
-	}
+    // Notice that the last value for pMessage is passed into the next call
+    if (!pIChen->GetNextServerMessage(&pMessage)) {
+        // This shouldn't happen!  Something has gone wrong with the connection!
+        // ... do something drastic (e.g. reconnect)...
+        break;
+    }
 
-	// Check if the server connection is broken
-	if (!pMessage->isConnected) {
-		// Attempt to reconnect once every 100 cycles
-		if (reconnect_count < 0) reconnect_count = 100;
-		if (reconnect_count > 0) reconnect_count--;
-		if (reconnect_count == 0) {
-			// Warning: CiChenLibraryInterface::SetIChenConnection blocks
-			pIChen->SetIChenConnection(true);
-			reconnect_count = -1;
-		}
-	} else {
-		reconnect_count = -1;
-	}
+    // Check if the server connection is broken
+    if (!pMessage->isConnected) {
+        // Attempt to reconnect once every 100 cycles
+        if (reconnect_count < 0) reconnect_count = 100;
+        if (reconnect_count > 0) reconnect_count--;
+        if (reconnect_count == 0) {
+            // Warning: CiChenLibraryInterface::SetIChenConnection blocks
+            pIChen->SetIChenConnection(true);
+            reconnect_count = -1;
+        }
+    } else {
+        reconnect_count = -1;
+    }
 
-	// Check the message type
-	switch (pMessage->iChenActivityType)
-	{
-		case IChenActivityType::NO_SERVER_DATA: break;	// No message
+    // Check the message type
+    switch (pMessage->iChenActivityType)
+    {
+        case IChenActivityType::NO_SERVER_DATA: break;  // No message
 
-		case IChenActivityType::SERVER_MESSAGE:
-		{
-			// Cast to SiChenServerMessageType
-			SiChenServerMessageType *pSvrMsg =
-				static_cast<SiChenServerMessageType *>(pMessage);
+        case IChenActivityType::SERVER_MESSAGE:
+        {
+            // Cast to SiChenServerMessageType
+            SiChenServerMessageType *pSvrMsg =
+                static_cast<SiChenServerMessageType *>(pMessage);
 
-			// Handle message
-			PopupMessageOnScreen(pMessage->ServerMessage);
-			break;
-		}
+            // Handle message
+            PopupMessageOnScreen(pMessage->ServerMessage);
+            break;
+        }
 
-			:
-		// Handle other messages
-			:
-	}
+            :
+        // Handle other messages
+            :
+    }
 
-	Sleep(100);	// Throttle the message handling rate based on CPU resources
+    Sleep(100);  // Throttle the message handling rate based on CPU resources
 }
 ~~~~~~~~~~~~~
 
@@ -135,7 +135,6 @@ All method calls on the `CiChenLibraryInterface` class are thread-safe.
 // Send an alarm notification
 pIChen->SendAlarmTriggered(123);
 ~~~~~~~~~~~~~
-
 
 
 CiChenLibraryInterface
@@ -152,17 +151,17 @@ class CiChenLibraryInterface()
 
 class CiChenLibraryInterface
 (
-	UINT8 controllerType,
-	UINT32 languageIndex,
-	UINT32 clientVersionMajor,
-	UINT32 clientVersionMinor,
-	UINT32 machineSerialNumber,
-	std::string machineModel,
-	UINT8 serverIp1,
-	UINT8 serverIp2,
-	UINT8 serverIp3,
-	UINT8 serverIp4,
-	UINT16 serverPort
+    UINT8 controllerType,
+    UINT32 languageIndex,
+    UINT32 clientVersionMajor,
+    UINT32 clientVersionMinor,
+    UINT32 machineSerialNumber,
+    std::string machineModel,
+    UINT8 serverIp1,
+    UINT8 serverIp2,
+    UINT8 serverIp3,
+    UINT8 serverIp4,
+    UINT16 serverPort
 )
 ~~~~~~~~~~~~~
 
@@ -190,8 +189,8 @@ use any number starting from 100 as the `controllerType`.  Controller types 0-99
 ### Example
 
 ~~~~~~~~~~~~~cpp
-CiChenLibraryInterface *pIChen = 
-	new CiChenLibraryInterface(10,0,1,0,123456,L"JM138Ai",192,168,123,234,34954);
+CiChenLibraryInterface *pIChen =
+    new CiChenLibraryInterface(10,0,1,0,123456,L"JM138Ai",192,168,123,234,34954);
 ~~~~~~~~~~~~~
 
 
@@ -234,9 +233,9 @@ Turns on logging to an external file.
 
 ~~~~~~~~~~~~~cpp
 void EnableLogging(
-	std::wstring filename,
-	int maxFileSize = 1048576,
-	bool isLogRawMessage = false);
+    std::wstring filename,
+    int maxFileSize = 1048576,
+    bool isLogRawMessage = false);
 ~~~~~~~~~~~~~
 
 ### Parameters
@@ -339,7 +338,7 @@ disconnect from the Server before calling this method.
 // Set the type of the controller to CBmold300 (#10)
 if (!piChen->SetControllerType(10))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -383,7 +382,7 @@ disconnect from the Server before calling this method.
 // Set the current UI language to French (#4)
 if (!piChen->SetLanguage(4))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -399,10 +398,10 @@ Sets basic information about the machine.
 
 ~~~~~~~~~~~~~cpp
 bool SetMachineInfo(
-	UINT32 clientVersionMajor,
-	UINT32 clientVersionMinor,
-	UINT32 machineSerialNumber,
-	std::string machineModel);
+    UINT32 clientVersionMajor,
+    UINT32 clientVersionMinor,
+    UINT32 machineSerialNumber,
+    std::string machineModel);
 ~~~~~~~~~~~~~
 
 ### Parameters
@@ -432,7 +431,7 @@ disconnect from the Server before calling this method.
 //   Machine model: JM138-Ai
 if (!piChen->SetMachineInfo(3, 1, 123456, "JM138-Ai"))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -474,7 +473,7 @@ disconnect from the Server before calling this method.
 // Set the server's IP address to 192.168.123.234 and port 34954
 if (!piChen->SetServerIP(192, 168, 123, 234, 34954))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -524,7 +523,7 @@ of the server's *heartbeat* interval.
 // Set the server's heartbeat to 15 seconds
 if (!piChen->SetServerDisconnectTimeout(15.0f))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -574,7 +573,7 @@ of the server's required *heartbeat* interval.
 // Set the heartbeat to 15 seconds
 if (!piChen->SetControllerHeartBeatPeriod(15.0f))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -616,9 +615,9 @@ which can be modified with [SetServerDisconnectTimeout](#cichenlibraryinterfaces
 ~~~~~~~~~~~~~cpp
 // Connects to the iChen 4.0 Server
 pIChen->SendIChenConnection(true);
-	:
-	// Do some work
-	:
+    :
+    // Do some work
+    :
 // Disconnects from the iChen 4.0 Server
 pIChen->SendIChenConnection(false);
 ~~~~~~~~~~~~~
@@ -662,7 +661,7 @@ granted to the operator with this password.
 // Log into the server with password "hello"
 if (!piChen->SendLoginRequest("hello"))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -728,7 +727,7 @@ TRUE if successful, otherwise FALSE.
 // Operation mode is changed from Manual (1) to Automatic (3)
 if (!piChen->SendOperationMode(3, 1))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -803,7 +802,7 @@ its duties.
 // Job mode is changed from #4 to #7
 if (!piChen->SendJobMode(7, 4))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -824,10 +823,10 @@ values, typically statistics on the production process or sensor measurements.
 
 ~~~~~~~~~~~~~cpp
 bool SendCycleData(
-	UINT32 currentJobCardId,
-	UINT32 currentMoldId,
-	UINT32 currentJobMode,
-	std::vector<SiChenDataType> cycleDataNameValuePair);
+    UINT32 currentJobCardId,
+    UINT32 currentMoldId,
+    UINT32 currentJobMode,
+    std::vector<SiChenDataType> cycleDataNameValuePair);
 ~~~~~~~~~~~~~
 
 ### Parameters
@@ -852,29 +851,29 @@ std::vector<SiChenDataType> listOfDataValues;
 // Fill list with values
 for (int i = 0; i < 10; i++)
 {
-	// Allocate data value
-	SiChenDataType data;
+    // Allocate data value
+    SiChenDataType data;
 
-	// Set test data value to loop index, absolute integer value
-	// Remember: Only float values are supported!
-	data.iChenDataValue.F = i * 42;
-	data.isFloatingPoint = true;
-	data.isAbsoluteValue = true;
+    // Set test data value to loop index, absolute integer value
+    // Remember: Only float values are supported!
+    data.iChenDataValue.F = i * 42;
+    data.isFloatingPoint = true;
+    data.isAbsoluteValue = true;
 
-	// Copy variable index
-	data.iChenDataIndex = i;
+    // Copy variable index
+    data.iChenDataIndex = i;
 
-	// ... or use this concise format
-	// Remember: Only float values are supported, so use cast the value to float
-	// SiChenDataType data = { i, float(i * 42), true, true };
+    // ... or use this concise format
+    // Remember: Only float values are supported, so use cast the value to float
+    // SiChenDataType data = { i, float(i * 42), true, true };
 
-	// Add to the list
-	listOfDataValues.push_back(data);
+    // Add to the list
+    listOfDataValues.push_back(data);
 }
 
 if (!piChen->SendCycleData(33, 88, 2, listOfDataValues))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -988,7 +987,7 @@ UiChenValueType oldval(888);
 
 if (!piChen->SendAuditTrail(data, oldval))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1005,10 +1004,10 @@ to an iChen® 4.0 Server.
 
 ~~~~~~~~~~~~~cpp
 bool SendAction(
-	UINT32 primaryActionIndex,
-	UINT32 auxiliaryAction1Index,
-	UINT32 auxiliaryAction2Index,
-	UINT32 auxiliaryAction3Index);
+    UINT32 primaryActionIndex,
+    UINT32 auxiliaryAction1Index,
+    UINT32 auxiliaryAction2Index,
+    UINT32 auxiliaryAction3Index);
 ~~~~~~~~~~~~~
 
 ### Parameters
@@ -1028,7 +1027,7 @@ TRUE if successful, otherwise FALSE.
 // Primary action = 1003, Aux action = 1138
 if (!piChen->SendAction(1003, 1138, 0 0))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1045,11 +1044,11 @@ in response to a [`HOST_STATE_REQUEST`](#ichenactivitytype) message sent by the 
 
 ~~~~~~~~~~~~~cpp
 bool SendStatusReply(
-	UINT32 curOpMode,
-	UINT32 curJobMode,
-	UINT32 curJobCardId,
-	UINT32 curMoldId,
-	std::wstring curMoldName);
+    UINT32 curOpMode,
+    UINT32 curJobMode,
+    UINT32 curJobCardId,
+    UINT32 curMoldId,
+    std::wstring curMoldName);
 ~~~~~~~~~~~~~
 
 ### Parameters
@@ -1077,7 +1076,7 @@ TRUE if successful, otherwise FALSE.
 //   Mold name = ABC-123
 if (!piChen->SendStatusReply(2, 1, 33, 88, L"ABC-123"))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1094,8 +1093,8 @@ to persist it under a mold name.
 
 ~~~~~~~~~~~~~cpp
 bool SendMoldDataUploadRequest(
-	std::wstring moldName,
-	std::vector<SiChenDataType> moldData);
+    std::wstring moldName,
+    std::vector<SiChenDataType> moldData);
 ~~~~~~~~~~~~~
 
 ### Parameters
@@ -1130,28 +1129,28 @@ std::vector<SiChenDataType> listOfDataValues;
 // Fill list with values
 for (int i = 0; i < 10; i++)
 {
-	// Allocate data value
-	SiChenDataType data;
+    // Allocate data value
+    SiChenDataType data;
 
-	// Set test data value to loop index, absolute integer value
-	data.iChenDataValue.UI32 = i * 42;
-	data.isFloatingPoint = false;
-	data.isAbsoluteValue = true;
+    // Set test data value to loop index, absolute integer value
+    data.iChenDataValue.UI32 = i * 42;
+    data.isFloatingPoint = false;
+    data.isAbsoluteValue = true;
 
-	// Copy variable index
-	data.iChenDataName = i;
+    // Copy variable index
+    data.iChenDataName = i;
 
-	// ... or use this concise format
-	// SiChenDataType data = { i, i * 42, false, true };
+    // ... or use this concise format
+    // SiChenDataType data = { i, i * 42, false, true };
 
-	// Add to the list
-	listOfDataValues.push_back(data);
+    // Add to the list
+    listOfDataValues.push_back(data);
 }
 
 // Upload as mold name "ABC-123"
 if (!piChen->SendMoldDataUploadRequest(L"ABC-123", listOfDataValues))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1169,10 +1168,10 @@ sent by the server.
 
 ~~~~~~~~~~~~~cpp
 bool SendMoldSummaryReply(
-	UINT32 terminalIp,
-	UINT16 terminalPort,
-	std::wstring moldName,
-	std::vector<SiChenDataType> moldData);
+    UINT32 terminalIp,
+    UINT16 terminalPort,
+    std::wstring moldName,
+    std::vector<SiChenDataType> moldData);
 ~~~~~~~~~~~~~
 
 ### Parameters
@@ -1204,27 +1203,27 @@ std::vector<SiChenDataType> listOfDataValues;
 // Fill list with values
 for (int i = 0; i < 10; i++)
 {
-	// Allocate data value
-	SiChenDataType data;
+    // Allocate data value
+    SiChenDataType data;
 
-	// Set test data value to loop index, absolute integer value
-	data.iChenDataValue.UI32 = i * 42;
-	data.isFloatingPoint = false;
-	data.isAbsoluteValue = true;
+    // Set test data value to loop index, absolute integer value
+    data.iChenDataValue.UI32 = i * 42;
+    data.isFloatingPoint = false;
+    data.isAbsoluteValue = true;
 
-	// Copy variable index
-	data.iChenDataIndex = i;
+    // Copy variable index
+    data.iChenDataIndex = i;
 
-	// ... or use this concise format
-	// SiChenDataType data = { i, i * 42, false, true };
+    // ... or use this concise format
+    // SiChenDataType data = { i, i * 42, false, true };
 
-	// Add to the list
-	listOfDataValues.push_back(data);
+    // Add to the list
+    listOfDataValues.push_back(data);
 }
 
 if (!piChen->SendMoldSummaryReply(0x12345678, 5678, L"ABC-123", listOfDataValues))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1265,7 +1264,7 @@ However, this response message is not guaranteed to arrive.
 // Search for molds containing the words "ABC"
 if (!piChen->SendMoldDataListRequest(L"ABC"))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1282,10 +1281,10 @@ set of mold settings data.
 
 ~~~~~~~~~~~~~cpp
 bool SendMoldDataRequest(
-	UINT32 moldId,
-	UINT32 jobCardId,
-	UINT32 currentYield,
-	UINT32 maxYield);
+    UINT32 moldId,
+    UINT32 jobCardId,
+    UINT32 currentYield,
+    UINT32 maxYield);
 ~~~~~~~~~~~~~
 
 ### Parameters
@@ -1313,7 +1312,7 @@ However, this response message is not guaranteed to arrive.
 // Load the mold with ID=88, job card ID=33
 if (!piChen->SendMoldDataRequest(88, 33, 0, 0))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1351,7 +1350,7 @@ However, this response message is not guaranteed to arrive.
 ~~~~~~~~~~~~~cpp
 if (!piChen->SendJobCardListRequest())
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1393,7 +1392,7 @@ However, this response message is not guaranteed to arrive.
 // Load the job card with ID=33
 if (!piChen->SendJobCardRequest(33))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1427,7 +1426,7 @@ TRUE if successful, otherwise FALSE.
 // Notify the server that the current job card has changed to ID=33
 if (!piChen->SendJobCardChanged(33))
 {
-	// Handle error
+    // Handle error
 }
 ~~~~~~~~~~~~~
 
@@ -1497,9 +1496,9 @@ This union is used to hold a single 32-bit integer, floating-point number or a b
 ~~~~~~~~~~~~~cpp
 union UiChenValueType
 {
-	UINT32 UI32;
-	float F;
-	bool B;
+    UINT32 UI32;
+    float F;
+    bool B;
 };
 ~~~~~~~~~~~~~
 
@@ -1509,7 +1508,7 @@ SiChenDataType
 
 ### Usage
 
-This struct is used to hold a single, named numeric variable that can be either boolean,
+This `struct` is used to hold a single, named numeric variable that can be either boolean,
 integral or float-point.
 
 ### Structure
@@ -1517,10 +1516,10 @@ integral or float-point.
 ~~~~~~~~~~~~~cpp
 struct SiChenDataType
 {
-	UINT32 iChenDataIndex;
-	UiChenValueType iChenDataValue;
-	bool isFloatingPoint;
-	bool isAbsoluteValue;
+    UINT32 iChenDataIndex;
+    UiChenValueType iChenDataValue;
+    bool isFloatingPoint;
+    bool isAbsoluteValue;
 };
 ~~~~~~~~~~~~~
 
@@ -1546,7 +1545,7 @@ to the following rules:
 
 * Relative floating-point values represent percentages and are converted into floating-point
   numbers by dividing by 1000 (i.e. 0 becomes 0.0, 100 becomes 0.1).
-  It is typicallyed by the server assumed that any data less than 0.1 is a percentage.
+  Typically, a server assumes that any data less than 0.1 is a percentage.
 
 
 SMoldItem
@@ -1554,7 +1553,7 @@ SMoldItem
 
 ### Usage
 
-This struct is used to hold metadata regarding a set of settings data
+This `struct` is used to hold metadata regarding a set of settings data
 for a particular mold.
 
 ### Structure
@@ -1562,12 +1561,12 @@ for a particular mold.
 ~~~~~~~~~~~~~cpp
 struct SMoldItem
 {
-	UINT32 moldItemID;
-	std::wstring moldItemName;
-	UINT32 SerialID;
-	std::wstring moldItemCreateDate;
-	std::wstring moldItemCreateTime;
-	std::wstring moldItemVersion;
+    UINT32 moldItemID;
+    std::wstring moldItemName;
+    UINT32 SerialID;
+    std::wstring moldItemCreateDate;
+    std::wstring moldItemCreateTime;
+    std::wstring moldItemVersion;
 };
 ~~~~~~~~~~~~~
 
@@ -1587,19 +1586,19 @@ SJobCardItem
 
 ### Usage
 
-This struct is used to hold metadata on a single job card.
+This `struct` is used to hold metadata on a single job card.
 
 ### Structure
 
 ~~~~~~~~~~~~~cpp
 struct SJobCardItem
 {
-	UINT32 jobCardItemId;
-	UINT32 jobCardItemNumber;
-	std::wstring jobCardItemMoldName;
-	std::wstring jobCardItemName;
-	UINT32 jobCardItemCurrentYield;
-	UINT32 jobCardItemMaxYield;
+    UINT32 jobCardItemId;
+    UINT32 jobCardItemNumber;
+    std::wstring jobCardItemMoldName;
+    std::wstring jobCardItemName;
+    UINT32 jobCardItemCurrentYield;
+    UINT32 jobCardItemMaxYield;
 };
 ~~~~~~~~~~~~~
 
@@ -1650,18 +1649,18 @@ indicating the type of the message.
 ~~~~~~~~~~~~~cpp
 enum IChenActivityType
 {
-	NO_SERVER_DATA,
-	JOBMODE_LIST_REPLY,
-	SERVER_MESSAGE,
-	HOST_STATE_REQUEST,
-	PASSWORD_LEVEL_REPLY,
-	USER_FORCED_LOGOUT,
-	MOLD_DATA_SAVED,
-	MOLD_SUMMARY_REQUEST,
-	MOLD_LIST_REPLY,
-	MOLD_DATA_REPLY,
-	JOBCARD_LIST_REPLY,
-	JOBCARD_DATA_REPLY
+    NO_SERVER_DATA,
+    JOBMODE_LIST_REPLY,
+    SERVER_MESSAGE,
+    HOST_STATE_REQUEST,
+    PASSWORD_LEVEL_REPLY,
+    USER_FORCED_LOGOUT,
+    MOLD_DATA_SAVED,
+    MOLD_SUMMARY_REQUEST,
+    MOLD_LIST_REPLY,
+    MOLD_DATA_REPLY,
+    JOBCARD_LIST_REPLY,
+    JOBCARD_DATA_REPLY
 };
 ~~~~~~~~~~~~~
 
@@ -1688,7 +1687,7 @@ SiChenBaseMessageType
 
 ### Usage
 
-This struct is the base of all message types sent from an iChen® 4.0 Server
+This `struct` is the base of all message types sent from an iChen® 4.0 Server
 to the controller.
 
 ### Structure
@@ -1696,8 +1695,8 @@ to the controller.
 ~~~~~~~~~~~~~cpp
 struct SiChenBaseMessageType
 {
-	bool isConnected;
-	IChenActivityType iChenActivityType;
+    bool isConnected;
+    IChenActivityType iChenActivityType;
 };
 ~~~~~~~~~~~~~
 
@@ -1724,7 +1723,7 @@ for all the *job modes* (see [here](#job-modes) for a full list).
 ~~~~~~~~~~~~~cpp
 struct SiChenJobModeListRepType : SiChenBaseMessageType
 {
-	std::vector<std::wstring> returnedJobModeList;
+    std::vector<std::wstring> returnedJobModeList;
 };
 ~~~~~~~~~~~~~
 
@@ -1788,7 +1787,7 @@ to the controller for display on its screen.
 ~~~~~~~~~~~~~cpp
 struct SiChenServerMessageType : SiChenBaseMessageType
 {
-	std::wstring serverMessage;
+    std::wstring serverMessage;
 };
 ~~~~~~~~~~~~~
 
@@ -1819,9 +1818,9 @@ the [`SendLoginRequest`](#cichenlibraryinterfacesendloginrequest) method call.
 ~~~~~~~~~~~~~cpp
 struct SiChenPwdLvRepType : SiChenBaseMessageType
 {
-	short userPasswordLevel;
-	bool isAllowAuto;
-	std::wstring userName;
+    short userPasswordLevel;
+    bool isAllowAuto;
+    std::wstring userName;
 };
 ~~~~~~~~~~~~~
 
@@ -1858,8 +1857,8 @@ authorities.
 ~~~~~~~~~~~~~cpp
 struct SiChenUserForcedLogoutType : SiChenBaseMessageType
 {
-	short userPasswordLevel;
-	bool isAllowAuto;
+    short userPasswordLevel;
+    bool isAllowAuto;
 };
 ~~~~~~~~~~~~~
 
@@ -1901,8 +1900,8 @@ of the machine.
 ~~~~~~~~~~~~~cpp
 struct SiChenMoldSummaryReqType : SiChenBaseMessageType
 {
-	UINT32 terminalIp;
-	UINT16 terminalPort;
+    UINT32 terminalIp;
+    UINT16 terminalPort;
 };
 ~~~~~~~~~~~~~
 
@@ -1937,7 +1936,7 @@ method calls.
 ~~~~~~~~~~~~~cpp
 struct SiChenMoldListRepType : SiChenBaseMessageType
 {
-	std::vector<SMoldItem> returnedMoldList;
+    std::vector<SMoldItem> returnedMoldList;
 };
 ~~~~~~~~~~~~~
 
@@ -1969,8 +1968,8 @@ the [`SendMoldDataRequest`](#cichenlibraryinterfacesendmolddatarequest) method c
 ~~~~~~~~~~~~~cpp
 struct SiChenMoldDataRepType : SiChenBaseMessageType
 {
-	std::wstring moldName;
-	std::vector<SiChenDataType> returnedMoldData;
+    std::wstring moldName;
+    std::vector<SiChenDataType> returnedMoldData;
 };
 ~~~~~~~~~~~~~
 
@@ -2007,7 +2006,7 @@ the [`SendJobCardListRequest`](#cichenlibraryinterfacesendjobcardlistrequest) me
 ~~~~~~~~~~~~~cpp
 struct SiChenJobCardListRepType : SiChenBaseMessageType
 {
-	std::vector<SJobCardItem> returnedJobCardList;
+    std::vector<SJobCardItem> returnedJobCardList;
 };
 ~~~~~~~~~~~~~
 
