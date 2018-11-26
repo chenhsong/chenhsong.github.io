@@ -63,11 +63,11 @@ _MODEL_ `|` _TYPE_ `|` _PROTOCOL VERSION_ `|` _FIRMWARE VERSION_ `|` _PROGRAM VE
 
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
-|MODEL|Model of the machine|Text|UTF-8, avoid `|`|
+|MODEL|Model of the machine|Text|UTF-8, avoid `\|`|
 |PROTOCOL VERSION|Version of the SMP protocol|Text|`\d+\.\d+\.\d+`|
 |FIRMWARE VERSION|Version of the controller's firmware|Text|`\d+\.\d+\.\d+`|
 |PROGRAM VERSION|Version of the controller's PLC program|Text|`\d+\.\d+\.\d+`|
-|NAME|Name of the machine|Text|UTF-8, avoid `|`|
+|NAME|Name of the machine|Text|UTF-8, avoid `\|`|
 
 Follow-on: The [`OPMODE`](#opmode), [`JOBMODE`](#jobmode), [`OPERATOR`](#operator), [`ALARMS`](#alarms), [`VARIABLES`](#variables) and [`MOLDDATA`](#molddata) messages should be sent immediately after this message to prime the initial states of the controller.
 
@@ -127,13 +127,13 @@ OPERATOR
 **Data:**
   
 _LEVEL_ `|` _OPERATOR_ `|` _NAME_
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |LEVEL|Authorization level of the operator|Unsigned integer|`\d+`|
 |OPERATOR|Unique ID of the operator|Unsigned integer|`\d+`|
-|NAME|Name of the operator|Text|UTF-8, avoid `|`|
-	
+|NAME|Name of the operator|Text|UTF-8, avoid `\|`|
+
 OPMODE
 ------
 
@@ -143,7 +143,7 @@ OPMODE
 **Data:**
   
 _OPMODE_
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |OPMODE|Operating mode of the machine|Text|`MANUAL` or `SEMIAUTO` or `AUTO`|
@@ -157,11 +157,11 @@ JOBMODE
 **Data:**
   
 _JOBMODE_
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |JOBMODE|Job mode value|Unsigned integer|`0`-`15`|
-	
+
 VAR
 ---
 
@@ -170,12 +170,12 @@ VAR
 **Data:**
   
 _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ ...
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |VARIABLE|Name of variable|Text|`[A-Za-z0-9_-]+`|
 |VALUE|Value of variable|Floating-point|`\d+(\.\d+)?`|
-	
+
 AUDIT
 -----
 
@@ -184,7 +184,7 @@ AUDIT
 **Data:**
   
 _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ ...
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |VARIABLE|Name of setting|Text|`[A-Za-z0-9_-]+`|
@@ -198,11 +198,11 @@ MOLDNAME
 **Data:**
   
 _NAME_
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
-|NAME|Name of mold|Text|UTF-8, avoid `|`|
-	
+|NAME|Name of mold|Text|UTF-8, avoid `\|`|
+
 ALARMS
 ------
 
@@ -212,11 +212,11 @@ ALARMS
 **Data:**
   
 _ALARM_ `|` _ALARM_ `|` _ALARM_ ...
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |ALARM|Name of alarm|Text|`[A-Za-z0-9_-]+`|
-	
+
 MOLDDATA
 --------
 
@@ -226,7 +226,7 @@ MOLDDATA
 **Data:**
   
 _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ ...
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |VARIABLE|Name of mold data variable|Text|`[A-Za-z0-9_-]+`|
@@ -241,7 +241,7 @@ VARIABLES
 **Data:**
   
 _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ ...
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |VARIABLE|Name of variable|Text|`[A-Za-z0-9_-]+`|
