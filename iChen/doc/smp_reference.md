@@ -41,8 +41,8 @@ Message Fields
 |SERIAL|Serial number of the controller|Unsigned integer|`\d+`||
 |SESSION|Unique session ID|Text|`[A-Za-z0-9_-]+`|Unique per connection session|
 |COUNTER|Sequence number|Unsigned integer|`\d+`|Increment per message, starting from 1|
-|SEND TIME|Date/time the this message is sent from the controller|Text|ISO 8601 `yyyy-MM-ddTHH:mm:ss.fff+zz:zz` or Unix time `\d+`|Optional|
-|EVENT TIME|Date/time the event actually occurred|Text|ISO 8601 `yyyy-MM-ddTHH:mm:ss.fff+zz:zz` or Unix time `\d+`||
+|SEND TIME|Date/time the this message is sent from the controller|Text or Unsigned integer|ISO 8601 `yyyy-MM-ddTHH:mm:ss.fff+zz:zz` or Unix time `\d+`|Optional|
+|EVENT TIME|Date/time the event actually occurred|Text or Unsigned integer|ISO 8601 `yyyy-MM-ddTHH:mm:ss.fff+zz:zz` or Unix time `\d+`||
 
 
 HEARTBEAT
