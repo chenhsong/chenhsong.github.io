@@ -58,6 +58,7 @@ CREATE TABLE [CycleData]
 	[Controller] [int] NOT NULL,
 	[Time] [datetime2](2) NOT NULL,
 	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[UniqueID] [varchar](50) NULL DEFAULT (NULL),
 	[Operator] [int] NOT NULL CONSTRAINT [DF_CycleData_Operator] DEFAULT ((0)),
 	[OpMode] [tinyint] NOT NULL CONSTRAINT [DF_CycleData_OpMode] DEFAULT (NULL),
 	[JobMode] [tinyint] NOT NULL CONSTRAINT [DF_CycleData_JobMode] DEFAULT (NULL),
@@ -74,6 +75,13 @@ CREATE UNIQUE CLUSTERED INDEX [IX_CycleData] ON [CycleData]
 	[Time] ASC,
 	[ID] ASC
 )
+GO
+
+CREATE UNIQUE INDEX [IX_CycleData_UniqueID] ON [CycleData]
+(
+	[UniqueID]
+)
+WHERE [UniqueID] IS NOT NULL
 GO
 
 /****** Table [CycleDataValues] ******/

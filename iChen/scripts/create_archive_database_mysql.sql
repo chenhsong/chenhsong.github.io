@@ -61,13 +61,15 @@ CREATE TABLE `cycledata` (
   `Controller` int(11) NOT NULL,
   `Time` datetime NOT NULL,
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `UniqueID` varchar(50) DEFAULT NULL,
   `Operator` int(11) NOT NULL DEFAULT '0',
   `OpMode` tinyint(3) unsigned DEFAULT NULL,
   `JobMode` tinyint(3) unsigned DEFAULT NULL,
   `JobCard` varchar(100) DEFAULT NULL,
   `Mold` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `IX_Org_Controller_Time` (`OrgId`,`Controller`,`Time`)
+  KEY `IX_Org_Controller_Time` (`OrgId`,`Controller`,`Time`),
+  KEY `IX_UniqueID` (`UniqueID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
