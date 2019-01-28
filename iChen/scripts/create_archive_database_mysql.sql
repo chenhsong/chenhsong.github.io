@@ -104,6 +104,8 @@ CREATE TABLE `events` (
   `Operator` int(11) DEFAULT '0',
   `Connected` bit(1) DEFAULT NULL,
   `IP` varchar(25) DEFAULT NULL,
+  `GeoLatitude` double DEFAULT NULL,
+  `GeoLongitude` double DEFAULT NULL,
   `OpMode` tinyint(3) unsigned DEFAULT NULL,
   `JobMode` tinyint(3) unsigned DEFAULT NULL,
   `JobCard` varchar(100) DEFAULT NULL,
