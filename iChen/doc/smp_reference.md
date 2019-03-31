@@ -1,5 +1,5 @@
-Simple Message Protocol (SMP) for iChen® System 4.0
-===================================================
+Simple Message Protocol (SMP) for iChen® System 4
+================================================
 
 Protocol Version: 1.0.0  
 Revision Date: 2018-10-01
@@ -10,14 +10,14 @@ Preamble
 
 The Simple Message Protocol (SMP) is a text-based, single-direction protocol
 designed for third-party systems to make a simple data connection to an
-iChen® 4.0 Server.
+iChen® Server 4.
 
 Connection Types
 ----------------
 
 Any transport mechanism that supports sending a simple `LF`-delimited ASCII
-text stream can be used for SMP.  Currently, the iChen® 4.0 Server supports
-the following connection methods:
+text stream can be used for SMP.  Currently, iChen® Server 4 supports the
+following connection methods:
 
 * TCP/IP
 * Serial port
@@ -55,7 +55,7 @@ HEARTBEAT
 CONNECT
 -------
 
-**Description:** Connect to an iChen® 4.0 Server  
+**Description:** Connect to an iChen® Server 4  
 **Send:**        First message when connection is made  
 **Data:**
   
@@ -74,7 +74,7 @@ Follow-on: The [`OPMODE`](#opmode), [`JOBMODE`](#jobmode), [`OPERATOR`](#operato
 DISCONNECT
 ----------
 
-**Description:** Disconnect from the iChen® 4.0 Server  
+**Description:** Disconnect from the iChen® Server 4  
 **Send:**        Last message before connection is terminated  
 **Data:**        None
   
@@ -86,7 +86,7 @@ CYCLEDATA
 **Data:**
   
 _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ `|` _VARIABLE_ `=` _VALUE_ ...
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |VARIABLE|Name of cycle variable|Text|`[A-Za-z0-9_-]+`|
@@ -100,7 +100,7 @@ ALARMON
 **Data:**
   
 _ALARM_ `|` _ALARM_ ...
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |ALARM|Name of alarm|Text|`[A-Za-z0-9_-]+`|
@@ -113,7 +113,7 @@ ALARMOFF
 **Data:**
   
 _ALARM_ `|` _ALARM_ ...
-	
+
 |Field|Description|Type|Format|
 |-----|-----------|----|------|
 |ALARM|Name of alarm|Text|`[A-Za-z0-9_-]+`|

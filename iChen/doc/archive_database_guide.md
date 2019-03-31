@@ -1,5 +1,5 @@
-iChen® Server 4.1 -- Store Data to External Database
-===============================================================
+iChen® Server 4 -- Store Data to External Archival Database
+=========================================================
 
 Copyright © Chen Hsong Holdings Ltd.  All rights reserved.  
 Document Version: 4.1  
@@ -9,31 +9,30 @@ Last Edited: 2018-02-09
 Introduction
 ------------
 
-The iChen® Server 4.1 does not provide any data storage out-of-the-box.
-Users need to employ their own storage mechanism for data archival purposes.
-Data is usually obtained via either an Open Protocol™ or OPC UA connection.
+iChen® System 4 comes standard with **Chen Hsong Cloud** storage capabilities,
+allowing all data to be seamlessly uploaded to the cloud with no additional
+requirement other than a connection to the Internet itself (and an storage
+account ID from Chen Hsong, of course).
+A full *Analytics* suite of reports and historical data
+retrieval download options stands ready to work with data stored in the
+**Chen Hsong Cloud**.
 
-This design offers tremendous benefits.  Not only does it obey the principle of
+Out-of-the-box iChen® Server 4 does not provide any data storage facilities
+other than **Chen Hsong Cloud**. This design offers tremendous benefits.
+Not only does it obey the principle of
 [*Separation of Concerns (SoC)*](https://en.wikipedia.org/wiki/Separation_of_concerns),
 it helps keep the CPU, memory and hard-disk footprints of the server minimal,
 allowing it to run on a diverse range of hardware, such as head-less, fan-less
 mini-PC's with tiny form factor, small solid-state flash storage, weak CPU's and
 as low as 1GB of RAM. Such a device can practically be deployed *anywhere* with ease.
 
-Another benefit of this separation of concerns is the (future) ability of the
-server to run on non-Microsoft Windows® operating systems, e.g. Linux.
-
-In addition, the iChen® System 4.1 comes standard with **Chen Hsong Cloud**
-storage capabilities, allowing all data to be seamlessly uploaded to the cloud
-with no additional requirement other than a connection to the Internet itself
-(and an storage account ID from Chen Hsong, of course).
-A full *Analytics* suite of reports and historical data
-retrieval download options stands ready to work with data stored in the
-**Chen Hsong Cloud**.
+Typically, users  employ their own storage mechanism for data archival purposes.
+Data is obtained via an Open Protocol™ or OPC UA connection to the iChen® Server 4
+instance.
 
 Still, there are times that enterprise-local data storage is desired, especially
 where the enterprise already operates in-house database servers or private cloud
-storage facilities.  The iChen® Server 4.1 installation program automatically
+storage facilities.  The iChen® Server 4 installation program automatically
 handles the configuration, asking only a few information pieces such as the
 server name, user name and password etc.
 
@@ -63,7 +62,7 @@ Supported Databases
 
 |  Database System          |    Database Creation Script    |
 |---------------------------|:------------------------------:|
-|Microsoft SQL Server®|[Download Script for SQL Server](../scripts/create_archive_database_sqlserver.sql)|
+|Microsoft SQL Server®      |[Download Script for SQL Server](../scripts/create_archive_database_sqlserver.sql)|
 |Microsoft SQL Server® Express|[Download Script for SQL Server](../scripts/create_archive_database_sqlserver.sql)|
 |MSDE                       |[Download Script for SQL Server](../scripts/create_archive_database_sqlserver.sql)|
 |MySQL                      |[Download Script for MySQL](../scripts/create_archive_database_mysql.sql)|
@@ -112,21 +111,21 @@ GO
 
 #### Security Considerations for SQL Server®
 
-The iChen® Server 4.1 must be able to connect to the database via a user account
-that has permissions to read from and write to those tables. In general, this is
-usually accomplished by creating a special login exclusively for use by the
-iChen® System 4.1, granting it access to the database as well as the `db_datareader`
-and `db_datawriter` roles.
+The iChen® Server 4 instance must be able to connect to the external archival
+database via a user account that has permissions to read from and write to those
+tables. In general, this is usually accomplished by creating a special login
+exclusively for use by iChen® System 4, granting it access to the database
+as well as the `db_datareader` and `db_datawriter` roles.
 
 In some installations, Windows®-based or domain-based authorization may be used by
-the iChen® Server 4.1 to connect to the database. In that case, the user account
-used must still be granted access to the database as well as the `db_datareader`
+the iChen® Server 4 instance to connect to the database. In that case, the user
+account used must still be granted access to the database as well as the `db_datareader`
 and `db_datawriter` roles.
 
 #### Option: Create Tables under Custom Schema in SQL Server®
 
 When using an existing database for such storage (perhaps to include
-iChen® System 4.1 data together with data from other equipment),
+iChen® System 4 data together with data from other equipment),
 it is possible to create the tables under their own *schema* for better management
 and security control.  For example, running the following *before* creating the tables
 will change the *default schema* of the specified user (in this example, `iChenServer`)
@@ -142,7 +141,7 @@ exist -- it can be created with any database management tool, or the
 `CREATE SCHEMA` T-SQL statement.
 
 The user (`iChenServer` above) must be the user account that is used by the
-iChen® Server 4.1 to connect to the SQL Server®.
+iChen® Server 4 instance to connect to the SQL Server® instance.
 
 After changing the default schema of the user, login with the user before running
 the database creation script.  For this to succeed, the user must have `CREATE TABLE`
@@ -161,7 +160,7 @@ Step 1b -- Use the Installation Program
 --------------------------------------------
 
 There are no more steps to go. The installation program does all the work automatically.
-If the iChen® System 4.1 has already been installed, it is still possible to
+If the iChen® System 4 has already been installed, it is still possible to
 add an external data storage database by re-running the installation program and choosing
 the "Change" option.
 
@@ -172,13 +171,13 @@ Step 2 -- Edit the Database Connection String Manually
 This step, and the steps following, are only for manually configuring an external data
 storage database.
 
-Open the file `iChenServerService.exe.config` (within the main iChen® System 4.1 folder)
+Open the file `iChenServerService.exe.config` (within the main iChen® System 4 folder)
 and find the following section:
 
 ~~~~~~~~xml
 <configuration>
     <connectionStrings>
-        <add name="ConfigDB" connectionString="Data Source=|DataDirectory|\Database\iChenServerDB.sdf" providerName="System.Data.SqlServerCe.4.1" />
+        <add name="ConfigDB" connectionString="Data Source=|DataDirectory|\Database\iChenServerDB.sdf" providerName="System.Data.SqlServerCe.4" />
         <add name="DataArchiveDB" connectionString="..." providerName="System.Data.Odbc" />
     </connectionStrings>
 
@@ -215,7 +214,7 @@ The final `<connectionStrings>` section should now look like this (if using SQL 
 ~~~~~~~~xml
 <configuration>
     <connectionStrings>
-        <add name="ConfigDB" connectionString="Data Source=|DataDirectory|\Database\iChenServerDB.sdf" providerName="System.Data.SqlServerCe.4.1" />
+        <add name="ConfigDB" connectionString="Data Source=|DataDirectory|\Database\iChenServerDB.sdf" providerName="System.Data.SqlServerCe.4" />
         <add name="DataArchiveDB" connectionString="Driver={SQL Server};Server=ServerName\SQLSERVER;Database=HistoricalDataStorageDB;Uid=iChenServer;Pwd=ThePassword" providerName="System.Data.Odbc" />
     </connectionStrings>
 
@@ -224,8 +223,8 @@ The final `<connectionStrings>` section should now look like this (if using SQL 
 </configuration>
 ~~~~~~~~
 
-This allows the iChen® Server 4.1 to connect to the database server at the
-server `ServerName` and as the user `iChenServer` with password `ThePassword`.
+This allows the iChen® Server 4 instance to connect to the database at the
+server `ServerName`, as the user `iChenServer` with password `ThePassword`.
 
 > **Note:** Do the same for the file `iChenConsole.exe.config` if `iChenConsole.exe` will be used.
 
@@ -233,7 +232,7 @@ server `ServerName` and as the user `iChenServer` with password `ThePassword`.
 Step 3 -- Specify Database Connection in Configuration File Manually
 -------------------------------------------------------------------------
 
-Open the file `iChenServer.config` (within the main iChen® System 4.1 folder)
+Open the file `iChenServer.config` (within the main iChen® System 4 folder)
 and find the following section:
 
 ~~~~~~~~xml
@@ -299,9 +298,9 @@ Leaving the **Chen Hsong Cloud** settings intact will upload data for storage on
 Step 4 -- Restart
 ----------------------
 
-Restart the iChen® Server 4.1 and data should now be stored in the
+Restart the iChen® Server 4 instance. Data should now be stored in the
 provisioned database server.
 
-The *Analytics* module, by default, runs off stored data from the database
-if one is provisioned.  If not, it runs off stored data inside the
-**Chen Hsong Cloud**.
+The *Analytics* module, by default, automatically runs off stored data
+from the external archival database if one is provisioned.  If not,
+it runs off stored data inside the **Chen Hsong Cloud**.

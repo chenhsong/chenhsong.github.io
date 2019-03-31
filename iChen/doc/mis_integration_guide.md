@@ -1,18 +1,18 @@
-iChen® System 4.1 MIS/MES Integration Guide
-=============================================
+iChen® System 4 MIS/MES Integration Guide
+========================================
 
 Copyright © Chen Hsong Holdings Ltd.  All rights reserved.  
-Document Version: 4.1  
+Document Version: 4  
 Last Edited: 2018-01-23
 
 
 A Machine is NOT an Island
 --------------------------
 
-When a machine is connected via a network to the iChen® System 4.1, it can integrate
+When a machine is connected via a network to the iChen® System 4, it can integrate
 with the MIS (Manufacturing Information System) or MES (Manufacturing Execution
-System) of the factory.  When integrated, the
-machine stops being a stand-alone *island*, but instead becomes part of a larger, coherent scheme.
+System) of the factory.  When integrated, the machine stops being a stand-alone
+*island*, but instead becomes part of a larger, coherent, networked scheme.
 
 An MIS/MES communicates with the iChen® Server via the [Open Protocol™](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/api_reference.md).
 
@@ -40,19 +40,19 @@ staff has resigned or been transferred, and to redistribute the new passwords to
 As a result, machine access in a typical production environment is usually kept loose,
 difficult to track and trace.
 
-The iChen® System 4.1 provides *audit trail* features that automatically logs each and every
+The iChen® System 4 provides *audit trail* features that automatically logs each and every
 single change of setting made on each connected machine, as well as logging each and every
 alarm condition that ever occurred.  Even though this provides tremendous value for tracing
 out problems *after they happened*, it does not help in tracking *who* was responsible for
 the changes, and certainly does not help in *preventing* unauthorized changes in the first place.
 
 In order to provide *centrally-controlled* authentication and authorization, the
-iChen® System 4.1 can integrate with the MIS/MES for complete lock-down and control of access
+iChen® System 4 can integrate with the MIS/MES for complete lock-down and control of access
 to all machines.
 
-When a machine is connected to the iChen® System 4.1, the internal *password levels* stored in
+When a machine is connected to the iChen® System 4, the internal *password levels* stored in
 its controller are **disabled** in favor of centralized security. Therefore, no operator can
-gain access to a machine that is connected to the iChen® System 4.1 by entering an internal
+gain access to a machine that is connected to the iChen® System 4 by entering an internal
 password.
 
 The operator instead must enter a password that is unique to him/her only, and not shared by anybody
@@ -60,21 +60,21 @@ else in the company. Essentially, the operator's personal password *identifies* 
 Some companies integrate *staff card readers* to machine controllers and dispense with the need to
 manually enter passwords altogether.
 
-Upon receiving the personal password of the operator, the iChen® System 4.1 sends to the MIS/MES a
+Upon receiving the personal password of the operator, the iChen® System 4 sends to the MIS/MES a
 [`LoginOperatorMessage`](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#loginoperatormessage) message containing
 that password (or the staff number read from a staff badge).
 Upon receiving this message, the MIS/MES should authenticate the operator by checking in its
 centralized database of valid passwords, and matching a unique *operator ID* to the operator.
 
 If authenticated, the MIS/MES should send an [`OperatorInfoMessage`](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#operatorinfomessage)
-message to the iChen® System 4.1.  This message should contain information regarding the
+message to the iChen® System 4.  This message should contain information regarding the
 authorization of that particular operator:
 
 * Unique, numeric, non-zero operator ID *(some controllers display this information on-screen)*
 * Name of the operator *(some controllers display this information on-screen)*
 * Access level from zero (no access rights) to ten (full access rights)
 
-Upon receiving this reply message, the iChen® System 4.1 instructs the machine to recognize
+Upon receiving this reply message, the iChen® System 4 instructs the machine to recognize
 the appropriate access level of the operator, in addition to logging the operator's ID for
 records.
 
@@ -119,7 +119,7 @@ A job card also typically contains at least the following pieces of information:
 * The unique textual ID of a mold to use for production
 * The total quantity of products to be produced (or, when divided by the number of cavities in the specified mold, the number of production cycles)
 
-When connected to the iChen® System 4.1, a number of additional screens are enabled on
+When connected to the iChen® System 4, a number of additional screens are enabled on
 a machine. The machine *requests* a valid list of job cards from the MIS/MES by sending
 the [`RequestJobCardsListMessage`](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#requestjobcardslistmessage)
 message with the machine's serial number.
@@ -140,7 +140,7 @@ Depending on the authority of the operator, the machine typically should refuse
 to start production unless a valid job card is loaded. This can greatly reduce
 operator errors.
 
-The MIS/MES provides the list of valid job cards to the iChen® System 4.1 via a
+The MIS/MES provides the list of valid job cards to the iChen® System 4 via a
 [`JobCardsListMessage`](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#jobcardslistmessage) message.
 See also [here](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#job-card) for the format of each job card.
 
@@ -178,11 +178,11 @@ it is the responsibility of the MIS/MES to do so.
 Integrated Mold Management
 --------------------------
 
-The iChen® System 4.1 stores mold settings data locally and automatically serves the
+The iChen® System 4 stores mold settings data locally and automatically serves the
 correct data set upon request by a machine's controller, transcoding the data sets
 wherever necessary to the appropriate versions acceptable by the requesting controller.
 
-The iChen® System 4.1 also *backs up* the mold data sets to secure, protected and
+The iChen® System 4 also *backs up* the mold data sets to secure, protected and
 fault-tolerant cloud storage to ensure that no critical data is ever lost.
 All these are performed automatically and behind-the-scene.
 Normally, the MIS/MES does not need to care about this.
@@ -193,7 +193,7 @@ centrally.  There are a few ways to accomplish this:
 ### (1) Request Live Mold Data
 
 The MIS/MES sends a [`RequestMoldDataMessage`](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#requestmolddatamessage)
-to the iChen® System 4.1 for a particular machine (based on that machine's unique
+to the iChen® System 4 for a particular machine (based on that machine's unique
 serial number), which will respond with a
 [`MoldDataMessage`](https://github.com/chenhsong/OpenProtocol/blob/master/cs/doc/messages_reference.md#molddatamessage) containing the current
 settings data of the specified machine in the form of an binary array.
@@ -201,13 +201,13 @@ The MIS/MES can then store this data centrally.
 
 ### (2) Use the Mold Data REST API
 
-The iChen® System 4.1 exposes a Mold Data [REST API](https://github.com/chenhsong/iChen.Web/blob/master/REST%20API%20Reference.md#molds-management) that allows the
+The iChen® System 4 exposes a Mold Data [REST API](https://github.com/chenhsong/iChen.Web/blob/master/REST%20API%20Reference.md#molds-management) that allows the
 MIS/MES to inspect, add and delete stored mold data sets. It is up to the MIS/MES to synchronize
-its mold data sets database with that in the iChen® System 4.1.
+its mold data sets database with that in the iChen® System 4.
 
 ### (3) Mold Data Integration Module (Optional)
 
-An optional *Mold Data Integration Module* can be installed in the iChen® System 4.1
+An optional *Mold Data Integration Module* can be installed in the iChen® System 4
 to completely by-pass its internal mold data storage, always going to the MIS/MES instead.
 
 The *Mold Data Integration Module* is a separately-charged product.

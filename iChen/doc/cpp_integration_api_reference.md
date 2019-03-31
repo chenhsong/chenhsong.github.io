@@ -1,8 +1,8 @@
-iChen® 4.0 C++ Integration Library API Reference
-==============================================
+iChen® 4 C++ Integration Library API Reference
+=============================================
 
 Copyright © Chen Hsong Holdings Ltd.  All rights reserved.  
-Document Version: 4.0  
+Document Version: 4  
 Last Edited: 2017-05-22
 
 
@@ -13,11 +13,11 @@ Usage Instructions
 
 |Library file|`iChenNativeLibrary.lib`|
 |------------|------------------------|
-|Header file|`iChenNativeLibrary.h`|
-|Dependencies|`SiChenDataStruct.h` (iChen® 4.0 data structures)|
-|Namespace|`IChenNativeLibrary`|
+|Header file |`iChenNativeLibrary.h`  |
+|Dependencies|`SiChenDataStruct.h` (iChen® 4 data structures)|
+|Namespace   |`IChenNativeLibrary`    |
 |Compiler Toolset|Visual C++ 2008, WIN32 or WINCE7|
-|Libraries|Dynamic with ATL|
+|Libraries   |Dynamic with ATL        |
 
 ### Step 1
 
@@ -57,7 +57,7 @@ CiChenLibraryInterface *pIChen =
 
 ### Step 2
 
-Connect to the iChen® 4.0 Server.
+Connect to the iChen® Server 4 instance.
 
 ~~~~~~~~~~~~~cpp
 pIChen->SetIChenConnection(true);
@@ -142,7 +142,7 @@ CiChenLibraryInterface
 
 ### Usage
 
-This class contains all the facilities to integrate with an iChen® 4.0 network.
+This class contains all the facilities to integrate with an iChen® 4 network.
 
 ### Constructors
 
@@ -174,8 +174,8 @@ class CiChenLibraryInterface
 |`clientVersionMajor`,<br />`clientVersionMinor`|Version of the communications protocol (default 1.0)|
 |`machineSerialNumber`     |Unique serial number of the machine|
 |`machineModel`            |Model of the machine            |
-|`serverIp1`,<br />`serverIp2`,<br />`serverIp3`,<br />`serverIp4`|Four bytes representing the IP address of the iChen® 4.0 Server.|
-|`serverPort`              |Port number of the iChen® 4.0 Server (default 34954)|
+|`serverIp1`,<br />`serverIp2`,<br />`serverIp3`,<br />`serverIp4`|Four bytes representing the IP address of the iChen® Server 4 instance.|
+|`serverPort`              |Port number of the iChen® Server 4 instance (default 34954) instance|
 
 ### Thread Safety
 
@@ -328,7 +328,7 @@ TRUE if successful, otherwise FALSE.
 For a controller not specified in the official list (see [this document](https://github.com/chenhsong/OpenProtocol/blob/master/doc/enums.md#controllertypes)),
 use any number starting from 100.  Controller types 0-99 are reserved.
 
-This method cannot be called when already connected to an iChen® 4.0 Server.
+This method cannot be called when already connected to an iChen® Server 4 instance.
 Call [SetIChenConnection(false)](#cichenlibraryinterfacesetichenconnection) first to
 disconnect from the Server before calling this method.
 
@@ -348,7 +348,7 @@ CiChenLibraryInterface::SetLanguage
 
 ### Usage
 
-Sets the language to connect with the iChen® 4.0 Server
+Sets the language to connect with the iChen® Server 4 instance
 (see [this document](https://github.com/chenhsong/OpenProtocol/blob/master/doc/enums.md#languages) for a full list).
 
 Typically this should be the language currently showing on the UI of the controller,
@@ -372,7 +372,7 @@ TRUE if successful, otherwise FALSE.
 
 ### Remarks
 
-This method cannot be called when already connected to an iChen® 4.0 Server.
+This method cannot be called when already connected to an iChen® Server 4 instance.
 Call [SetIChenConnection(false)](#cichenlibraryinterfacesetichenconnection) first to
 disconnect from the Server before calling this method.
 
@@ -418,7 +418,7 @@ TRUE if successful, otherwise FALSE.
 
 ### Remarks
 
-This method cannot be called when already connected to an iChen® 4.0 Server.
+This method cannot be called when already connected to an iChen® Server 4 instance.
 Call [SetIChenConnection(false)](#cichenlibraryinterfacesetichenconnection) first to
 disconnect from the Server before calling this method.
 
@@ -441,7 +441,7 @@ CiChenLibraryInterface::SetServerIP
 
 ### Usage
 
-Sets the IP address and port of the iChen® 4.0 Server.
+Sets the IP address and port of the iChen® Server 4 instance.
 The default port is 34954.
 
 ### Syntax
@@ -454,8 +454,8 @@ bool SetServerIP(UINT8 ip1, UINT8 ip2, UINT8 ip3, UINT8 ip4, UINT16 port);
 
 |Parameter                 |Description                     |
 |--------------------------|--------------------------------|
-|`ip1`,`ip2`,`ip3`,`ip4`   |Four bytes representing the IP address of the iChen® 4.0 Server.|
-|`port`                    |Port number of the iChen® 4.0 Server (default 34954)|
+|`ip1`,`ip2`,`ip3`,`ip4`   |Four bytes representing the IP address of the iChen® Server 4 instance.|
+|`port`                    |Port number of the iChen® Server 4 instance (default 34954) instance|
 
 ### Return Value
 
@@ -463,7 +463,7 @@ TRUE if successful, otherwise FALSE.
 
 ### Remarks
 
-This method cannot be called when already connected to an iChen® 4.0 Server.
+This method cannot be called when already connected to an iChen® Server 4 instance.
 Call [SetIChenConnection(false)](#cichenlibraryinterfacesetichenconnection) first to
 disconnect from the Server before calling this method.
 
@@ -483,7 +483,7 @@ CiChenLibraryInterface::SetServerDisconnectTimeout
 
 ### Usage
 
-Sets the time interval, in seconds, to time-out a connection to an iChen® 4.0 Server
+Sets the time interval, in seconds, to time-out a connection to an iChen® Server 4 instance
 when no *heartbeat* from the server is received within the time interval.
 
 ### Syntax
@@ -504,16 +504,16 @@ TRUE if successful, otherwise FALSE.
 
 ### Remarks
 
-An iChen® 4.0 Server sends a *heartbeat* to all conencted clients on a periodic basis.
+An iChen® Server 4 instance sends a *heartbeat* to all conencted clients on a periodic basis.
 The *heartbeat* interval is configurable, and defaults to 10 seconds. In other words, by default,
-an iChen® 4.0 Server sends a *heartbeat* to connected clients once every 10 seconds.
+an iChen® Server 4 instance sends a *heartbeat* to connected clients once every 10 seconds.
 
 If a *heartbeat* is not received from the server after a long interval of time (typically
 multiple times of the server's *heartbeat* interval), then the server can be assumed
 dysfunctional or terminated.  This library automatically disconnects from the server when
 this time-out event happens. The default value is 60 seconds.
 
-Call this method only when the default *heartbeat* interval of the iChen® 4.0 Server
+Call this method only when the default *heartbeat* interval of the iChen® Server 4 instance
 has been changed. When that happens, set the time-out interval to at least 4 or 5 times
 of the server's *heartbeat* interval.
 
@@ -534,7 +534,7 @@ CiChenLibraryInterface::SetControllerHeartBeatPeriod
 ### Usage
 
 Sets the time interval, in seconds, to send a *heartbeat* to the connected
-iChen® 4.0 Server.
+iChen® Server 4 instance.
 
 ### Syntax
 
@@ -554,16 +554,16 @@ TRUE if successful, otherwise FALSE.
 
 ### Remarks
 
-Each controller connected to an iChen® 4.0 Server must send a *heartbeat* at regular
+Each controller connected to an iChen® Server 4 instance must send a *heartbeat* at regular
 intervals. This *heartbeat* interval is configurable, and defaults to 10 seconds.
-In other words, by default, this library sends a *heartbeat* to the iChen® 4.0 Server
+In other words, by default, this library sends a *heartbeat* to the iChen® Server 4 instance
 once every 10 seconds.
 
 If a *heartbeat* is not received from the server after a (configurable) period of time,
 defaulted to 20 seconds, the server *may* then assume that the client is dysfunctional or
 terminated and *may* disconnect the client.
 
-Call this method only when the default required *heartbeat* interval of the iChen® 4.0 Server
+Call this method only when the default required *heartbeat* interval of the iChen® Server 4 instance
 has been changed. When that happens, set the *heartbeat* interval to at least 1/2 or 1/3
 of the server's required *heartbeat* interval.
 
@@ -613,12 +613,12 @@ which can be modified with [SetServerDisconnectTimeout](#cichenlibraryinterfaces
 ### Example
 
 ~~~~~~~~~~~~~cpp
-// Connects to the iChen 4.0 Server
+// Connects to the iChen Server 4
 pIChen->SendIChenConnection(true);
     :
     // Do some work
     :
-// Disconnects from the iChen 4.0 Server
+// Disconnects from the iChen Server 4
 pIChen->SendIChenConnection(false);
 ~~~~~~~~~~~~~
 
@@ -672,7 +672,7 @@ CiChenLibraryInterface::SendForcedLogoutReply
 ### Usage
 
 Sends an acknowledgement in response to a [`SiChenUserForcedLogoutType`](#sichenuserforcedlogouttype)
-message sent by an iChen® 4.0 Server.
+message sent by an iChen® Server 4 instance.
 
 ### Syntax
 
@@ -701,7 +701,7 @@ CiChenLibraryInterface::SendOperationMode
 
 ### Usage
 
-Updates the current *operation mode* of the machine to the connected iChen® 4.0 Server.
+Updates the current *operation mode* of the machine to the connected iChen® Server 4 instance.
 (See [this document](https://github.com/chenhsong/OpenProtocol/blob/master/doc/enums.md#opmodes) for the full list of operation modes.
 
 ### Syntax
@@ -737,7 +737,7 @@ CiChenLibraryInterface::SendJobMode
 
 ### Usage
 
-Updates the current *job mode* of the machine to the connected iChen® 4.0 Server.
+Updates the current *job mode* of the machine to the connected iChen® Server 4 instance.
 
 ### Syntax
 
@@ -813,7 +813,7 @@ CiChenLibraryInterface::SendCycleData
 ### Usage
 
 Sends a set of data relating to the last cycle completed by the machine to an
-iChen® 4.0 Server.
+iChen® Server 4 instance.
 
 Each set of cycle data contains a collection of variables and their corresponding
 values, typically statistics on the production process or sensor measurements.
@@ -883,7 +883,7 @@ CiChenLibraryInterface::SendAlarmTriggered
 
 ### Usage
 
-Sends an alarm raised by the machine to an iChen® 4.0 Server.
+Sends an alarm raised by the machine to an iChen® Server 4 instance.
 
 ### Syntax
 
@@ -914,7 +914,7 @@ CiChenLibraryInterface::SendAlarmReset
 
 ### Usage
 
-Resets an alarm raised by the machine to an iChen® 4.0 Server.
+Resets an alarm raised by the machine to an iChen® Server 4 instance.
 
 ### Syntax
 
@@ -945,7 +945,7 @@ CiChenLibraryInterface::SendAuditTrail
 
 ### Usage
 
-Sends an *audit trail* to an iChen® 4.0 Server.
+Sends an *audit trail* to an iChen® Server 4 instance.
 An *audit trail* tracks the changing of the value of a settings variable on the controller.
 
 ### Syntax
@@ -998,7 +998,7 @@ CiChenLibraryInterface::SendAction
 ### Usage
 
 Sends *action codes* representing the machine's current action
-to an iChen® 4.0 Server.
+to an iChen® Server 4 instance.
 
 ### Syntax
 
@@ -1037,7 +1037,7 @@ CiChenLibraryInterface::SendStatusReply
 
 ### Usage
 
-Updates the current status of the controller to an iChen® 4.0 Server
+Updates the current status of the controller to an iChen® Server 4 instance
 in response to a [`HOST_STATE_REQUEST`](#ichenactivitytype) message sent by the server.
 
 ### Syntax
@@ -1086,7 +1086,7 @@ CiChenLibraryInterface::SendMoldDataUploadRequest
 
 ### Usage
 
-Uploads the current set of settings values of the machine to an iChen® 4.0 Server
+Uploads the current set of settings values of the machine to an iChen® Server 4 instance
 to persist it under a mold name.
 
 ### Syntax
@@ -1110,7 +1110,7 @@ TRUE if successful, otherwise FALSE.
 
 ### Remarks
 
-The current version of the iChen® 4.0 Server only accepts the numeric index of
+The current version of the iChen® Server 4 instance only accepts the numeric index of
 each setting variable, starting from zero.
 
 If variable names are used, a mapping table must be employed
@@ -1160,7 +1160,7 @@ CiChenLibraryInterface::SendMoldSummaryReply
 
 ### Usage
 
-Sends the current set of settings values of the machine to an iChen® 4.0 Server,
+Sends the current set of settings values of the machine to an iChen® Server 4 instance,
 most likely in response to a [SiChenMoldSummaryReqType](#sichenmoldsummaryreqtype)
 sent by the server.
 
@@ -1189,7 +1189,7 @@ TRUE if successful, otherwise FALSE.
 
 ### Remarks
 
-The current version of the iChen® 4.0 Server only accepts the numeric index of
+The current version of the iChen® Server 4 instance only accepts the numeric index of
 each setting variable.
 If variable names are used, a mapping table must be employed
 to convert between the numeric index and textual name of each variable.
@@ -1233,7 +1233,7 @@ CiChenLibraryInterface::SendMoldDataListRequest
 
 ### Usage
 
-Sends a message to an iChen® 4.0 Server asking for a list of mold settings data
+Sends a message to an iChen® Server 4 instance asking for a list of mold settings data
 available for download.
 
 ### Syntax
@@ -1274,7 +1274,7 @@ CiChenLibraryInterface::SendMoldDataRequest
 
 ### Usage
 
-Sends a message to an iChen® 4.0 Server to download a particular
+Sends a message to an iChen® Server 4 instance to download a particular
 set of mold settings data.
 
 ### Syntax
@@ -1322,7 +1322,7 @@ CiChenLibraryInterface::SendJobCardListRequest
 
 ### Usage
 
-Sends a message to an iChen® 4.0 Server asking for a list of job cards
+Sends a message to an iChen® Server 4 instance asking for a list of job cards
 available for download.
 
 ### Syntax
@@ -1360,7 +1360,7 @@ CiChenLibraryInterface::SendJobCardRequest
 
 ### Usage
 
-Sends a message to an iChen® 4.0 Server to download a particular job card.
+Sends a message to an iChen® Server 4 instance to download a particular job card.
 
 ### Syntax
 
@@ -1402,7 +1402,7 @@ CiChenLibraryInterface::SendJobCardChanged
 
 ### Usage
 
-Updates the ID of the currently-loaded job card to an iChen® 4.0 Server.
+Updates the ID of the currently-loaded job card to an iChen® Server 4 instance.
 
 ### Syntax
 
@@ -1628,7 +1628,7 @@ IChenActivityType
 
 ### Usage
 
-Messages can be sent from the iChen® 4.0 Server,
+Messages can be sent from the iChen® Server 4 instance,
 usually in response to a message sent from the controller
 to the server.
 
@@ -1639,7 +1639,7 @@ controller about a change in status.
 It is the controller's responsibility to handle these messages
 appropriately.
 
-Each message sent by an iChen® 4.0 Server is based on the
+Each message sent by an iChen® Server 4 instance is based on the
 base class [`SiChenBaseMessageType`](#sichenbasemessagetype)
 which contains a `DataType` field of type `IChenActivityType`
 indicating the type of the message.
@@ -1687,7 +1687,7 @@ SiChenBaseMessageType
 
 ### Usage
 
-This `struct` is the base of all message types sent from an iChen® 4.0 Server
+This `struct` is the base of all message types sent from an iChen® Server 4 instance
 to the controller.
 
 ### Structure
@@ -1713,7 +1713,7 @@ SiChenJobModeListRepType
 
 ### Usage
 
-This type holds a message sent by an iChen® 4.0 Server when the controller
+This type holds a message sent by an iChen® Server 4 instance when the controller
 successfully connects to it.
 The message contains a list of names/descriptions, in the specified language,
 for all the *job modes* (see [here](#job-modes) for a full list).
@@ -1779,7 +1779,7 @@ SiChenServerMessageType
 
 ### Usage
 
-This type holds a texual message sent from an iChen® 4.0 Server
+This type holds a texual message sent from an iChen® Server 4 instance
 to the controller for display on its screen.
 
 ### Structure
@@ -1810,7 +1810,7 @@ SiChenPwdLvRepType
 
 ### Usage
 
-This type holds a reply sent by an iChen® 4.0 Server in response to
+This type holds a reply sent by an iChen® Server 4 instance in response to
 the [`SendLoginRequest`](#cichenlibraryinterfacesendloginrequest) method call.
 
 ### Structure
@@ -1848,7 +1848,7 @@ SiChenUserForcedLogoutType
 
 ### Usage
 
-This type holds a message sent by an iChen® 4.0 Server to the controller
+This type holds a message sent by an iChen® Server 4 instance to the controller
 indicating that the controller should revoke the current operator's granted
 authorities.
 
@@ -1891,7 +1891,7 @@ SiChenMoldSummaryReqType
 
 ### Usage
 
-This type holds a message sent by an iChen® 4.0 Server to the controller
+This type holds a message sent by an iChen® Server 4 instance to the controller
 indicating that the controller should send a snapshot of the values of all variables
 of the machine.
 
@@ -1926,7 +1926,7 @@ SiChenMoldListRepType
 
 ### Usage
 
-This type holds a reply sent by an iChen® 4.0 Server in response to
+This type holds a reply sent by an iChen® Server 4 instance in response to
 the [`SendMoldDataListRequest`](#cichenlibraryinterfacesendmolddatalistrequest) or
 the [`SendJobCardRequest`](#cichenlibraryinterfacesendjobcardrequest)
 method calls.
@@ -1960,7 +1960,7 @@ SiChenMoldDataRepType
 
 ### Usage
 
-This type holds a reply sent by an iChen® 4.0 Server in response to
+This type holds a reply sent by an iChen® Server 4 instance in response to
 the [`SendMoldDataRequest`](#cichenlibraryinterfacesendmolddatarequest) method call.
 
 ### Structure
@@ -1987,7 +1987,7 @@ struct SiChenMoldDataRepType : SiChenBaseMessageType
 Upon receiving this message, the controller should set the variables of the machine
 according to the values contained in this message.
 
-The current version of the iChen® 4.0 Server only accepts the numeric index of
+The current version of the iChen® Server 4 instance only accepts the numeric index of
 each setting variable.
 If variable names are used, a mapping table must be employed
 to convert between the numeric index and textual name of each variable.
@@ -1998,7 +1998,7 @@ SiChenJobCardListRepType
 
 ### Usage
 
-This type holds a reply sent by an iChen® 4.0 Server in response to
+This type holds a reply sent by an iChen® Server 4 instance in response to
 the [`SendJobCardListRequest`](#cichenlibraryinterfacesendjobcardlistrequest) method call.
 
 ### Structure
