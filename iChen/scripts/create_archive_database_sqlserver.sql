@@ -112,7 +112,6 @@ CREATE TABLE [Events]
 	[IP] [varchar](25) NULL CONSTRAINT [DF_Events_IP] DEFAULT (NULL),
 	[GeoLatitude] [float] NULL CONSTRAINT [DF_Events_GeoLatitude] DEFAULT (NULL),
 	[GeoLongitude] [float] NULL CONSTRAINT [DF_Events_GeoLongitude] DEFAULT (NULL),
-	[IP] [varchar](25) NULL CONSTRAINT [DF_Events_IP] DEFAULT (NULL),
 	[OpMode] [tinyint] NULL CONSTRAINT [DF_Events_OpMode] DEFAULT (NULL),
 	[JobMode] [tinyint] NULL CONSTRAINT [DF_Events_JobMode] DEFAULT (NULL),
 	[JobCard] [nvarchar](100) NULL CONSTRAINT [DF_Events_JobCard] DEFAULT (NULL),
