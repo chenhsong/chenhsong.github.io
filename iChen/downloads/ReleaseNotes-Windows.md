@@ -1,7 +1,7 @@
 CHANGES LOG
 ===========
 
-4.3 build 7093.35619 (Releaes)
+4.3 build 7093.35619 (Release)
 -----------------------------
 
 ### System
@@ -152,6 +152,11 @@ CHANGES LOG
   window, the server will assume that the connection is dead and
   will terminate it.
 
+- `TypeName` field of `Message` is now thread-safe.
+
+- `OperatorInfo` now takes zero in the `OperatorId` field indicating
+  that the operator is not found.
+
 #### Enhancements
 
 - `RequestControllersListMessage` can now take an optional
@@ -179,7 +184,7 @@ CHANGES LOG
 #### Breaking Changes
 
 - `ControllerType` field in `Controller` is changed to `String` in
-  order to accommodate future controller types. 
+  order to accommodate future controller types.
   
 - The `ControllerTypes` `enum` is removed.
 
@@ -196,18 +201,18 @@ CHANGES LOG
 4.1 build 6845.39 (Release)
 --------------------------
 
+### Description
+
 This is the initial release of version 4.1 of the iChen® Server,
 which has been converted to .NET Standard 2.0 and runs under both
 Windows (with .NET Framework) and Linux (with .NET Core).
 
-This new version includes countless enhancements to version 4.0 
-with more hardware support (e.g. Linux `tty`-style serial ports, 
+This new version includes countless enhancements to version 4.0
+with more hardware support (e.g. Linux `tty`-style serial ports,
 CDC2000WIN and MPC-7.0 controllers), advanced features (e.g. `RT_TEMP`
 messages, broadcasting and relaying mode, Azure IOT Hub support),
 significant stability and performance improvements, as well as
 numerous bug fixes.
-
-
 
 
 4.0.4 build 6425.20461 (Release)
@@ -226,7 +231,6 @@ numerous bug fixes.
 - The Console is now multi-colored to better highlight errors and warnings.
 
 
-
 4.0.3
 -----
 
@@ -239,7 +243,6 @@ numerous bug fixes.
 - Supports HTTPS protocol and WS-Security (HTTP) for OPC UA access.
 
 
-
 4.0.2
 -----
 
@@ -249,7 +252,6 @@ numerous bug fixes.
   When a machine `JOIN`'s from a matched IP, the serial number is overwritten.
   This is to handle certain controllers on the field that tend to revert back to the
   default serial number for unknown reasons.
-
 
 
 4.0.1.2 build 6362.24844 (Release)
@@ -268,7 +270,6 @@ Release date: 2017-06-02
 - Support more firmware versions of the Ai-11 controller.
 
 
-
 4.0.1.1 build 6351.32843 (Release)
 ----------------------------------
 
@@ -279,9 +280,8 @@ Release date: 2017-05-22
 - Fixes a bug which prevents changing the password of admin users.
 
 
-
-4.0.1.0 build 6288.22134 (Release)
-----------------------------------
+4.0.1 build 6288.22134 (Release)
+-------------------------------
 
 Release date: 2017-03-20
 
@@ -294,7 +294,6 @@ Release date: 2017-03-20
 
 - New setup option to automatically login any connecting controller to authorization level 5
   (i.e. line supervisor).  This is particularly useful for Ai-series controllers.
-
 
 
 4.0 build 6250.41030 (Official Release)
@@ -315,7 +314,6 @@ This is the official iChen System 4.0 release.
 - The Terminal is now multi-lingual.
 
 
-
 4.0 build 6215.32800 (Release RC6.1)
 -----------------------------------
 
@@ -332,7 +330,6 @@ This is a maintenance release that fixes certain bugs on RC6.
   different from previous versions.
 
 
-
 4.0 build 6213.28860 (RC6)
 -------------------------
 
@@ -340,10 +337,9 @@ Release date: 2017-01-04
 
 ### New Features
 
-- Supports off-line data archiving to a SQL Server database
+- Supports off-line data archiving to an ODBC database interface
 
-- Analytics backed by data archived on a SQL Server database
-
+- Supports Analytics backed by data archived on an ODBC database interface
 
 
 4.0 build 6206.505 (RC5)
@@ -358,7 +354,6 @@ Release date: 2016-12-28
 
 - Analytics module for running analysis and downloading reports on historical data
   archived in the cloud
-
 
 
 4.0 build 6185.23504 (RC4.1)
@@ -379,7 +374,6 @@ via the web interface.
 ### Bug Fixes
 
 - Fixed a bug preventing changing/modifying user permissions on the web configuration
-
 
 
 4.0 build 6173.23190 (RC4)
@@ -404,7 +398,6 @@ Release date: 2016-11-25
 - All web-based examples are enhanced with the `ReadMoldData` command
 
 
-
 4.0 build 6157.37906 (RC3.1)
 ---------------------------
 
@@ -412,9 +405,7 @@ Release date: 2016-11-09
 
 ### Description
 
-This is a maintenance release that fixes a `RequestMoldData`
-bug on Ai controllers.
-
+This is a maintenance release that fixes a `RequestMoldData` bug on Ai controllers.
 
 
 4.0 build 6150.29856 (RC3)
@@ -437,7 +428,6 @@ Release date: 2016-11-02
 - Fixed issues on Safari
 
 
-
 4.0 build 6109.30398 (RC2)
 -------------------------
 
@@ -453,7 +443,7 @@ Release date: 2016-09-22
 
 - Fixed login issues on Chrome
 
-- Fixed missing Intl on Safari
+- Fixed missing `Intl` on Safari
 
 - Fixed Terminal background
 
