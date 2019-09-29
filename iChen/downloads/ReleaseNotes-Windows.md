@@ -1,7 +1,7 @@
 CHANGES LOG
 ===========
 
-4.3 build 7093.35619 (Release)
+4.3 build 7211.23391 (Release)
 -----------------------------
 
 ### System
@@ -99,6 +99,8 @@ CHANGES LOG
 - On certain controllers using Unicode (e.g. CDC2000WIN), bugs
   that cause the reading of text names (e.g. Mold ID) to stop at
   a zero byte are now fixed.
+
+- Certain crashes due to undisposed messages are avoided.
 
 ### Breaking Changes
 

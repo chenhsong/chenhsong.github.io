@@ -1,7 +1,26 @@
 CHANGES LOG
 ===========
 
-4.3 build 7093.35619 (Release)
+4.3 build 7211.23391 (Bug Fix Release)
+-------------------------------------
+
+### System
+
+#### Bug Fixes
+
+- Certain crashes due to undisposed messages are avoided.
+
+### `Open Protocol`
+
+#### Bug Fixes
+  
+- `TypeName` field of `Message` is now thread-safe.
+
+- `OperatorInfo` now takes zero in the `OperatorId` field indicating
+  that the operator is not found.
+
+
+4.2 build 7093.35619 (Release)
 ------------------------------
 
 ### System
