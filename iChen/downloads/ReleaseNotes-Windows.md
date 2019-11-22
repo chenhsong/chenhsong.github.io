@@ -1,8 +1,24 @@
 CHANGES LOG
 ===========
 
+4.3.1 build 7265.34424 (Hot Fix)
+--------------------------------
+
+### Bug Fixes
+
+- Fixes a bug that causes batch message sends to Azure IOT Hub to fail
+  by reverting the library to a previous working version.
+
+### Breaking Changes
+
+- The default database used is SQLite instead of SQL Server CE.
+  The default database file is `Database\iChenServer.db` instead
+  of `Database\iChenServer.sdf`.  This is to avoid certain performance
+  issues with SQL Server CE.
+
+
 4.3 build 7211.23391 (Release)
------------------------------
+------------------------------
 
 ### System
 
@@ -201,7 +217,7 @@ CHANGES LOG
 
 
 4.1 build 6845.39 (Release)
---------------------------
+---------------------------
 
 ### Description
 
@@ -218,7 +234,7 @@ numerous bug fixes.
 
 
 4.0.4 build 6425.20461 (Release)
--------------------------------
+--------------------------------
 
 ### New Feature
 
