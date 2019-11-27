@@ -1,6 +1,15 @@
 CHANGES LOG
 ===========
 
+4.3.1 build 7265.38116 (Hot Fix)
+--------------------------------
+
+### Bug Fixes
+
+- Fixes a bug that causes batch message sends to Azure IOT Hub to fail
+  by reverting the library to a previous working version.
+
+
 4.3 build 7211.23391 (Bug Fix Release)
 -------------------------------------
 
